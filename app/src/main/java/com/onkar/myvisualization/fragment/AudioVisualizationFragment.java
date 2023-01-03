@@ -27,7 +27,7 @@ public class AudioVisualizationFragment extends Fragment {
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		return new GLAudioVisualizationView.Builder(getContext())
+		return new GLAudioVisualizationView.Builder(requireContext())
 				.setBubblesSize(R.dimen.bubble_size)
 				.setBubblesRandomizeSize(true)
 				.setWavesHeight(R.dimen.wave_height)
@@ -44,7 +44,7 @@ public class AudioVisualizationFragment extends Fragment {
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		audioVisualization = (AudioVisualization) view;
-		audioVisualization.linkTo(DbmHandler.Factory.newVisualizerHandler(getContext(), 0));
+		audioVisualization.linkTo(DbmHandler.Factory.newVisualizerHandler(requireContext(), 0));
 	}
 
 	@Override

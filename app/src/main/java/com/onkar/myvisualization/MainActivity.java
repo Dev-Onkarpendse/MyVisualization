@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.widget.Toast;
 
-import com.onkar.myvisualization.fragment.AudioVisualizationFragment;
+
 import com.onkar.myvisualization.fragment.Mediavisualizer;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,14 +30,11 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO)
                         || ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.MODIFY_AUDIO_SETTINGS)) {
-                    AlertDialog.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (which == DialogInterface.BUTTON_POSITIVE) {
-                                requestPermissions();
-                            } else if (which == DialogInterface.BUTTON_NEGATIVE) {
-                                permissionsNotGranted();
-                            }
+                    AlertDialog.OnClickListener onClickListener = (dialog, which) -> {
+                        if (which == DialogInterface.BUTTON_POSITIVE) {
+                            requestPermissions();
+                        } else if (which == DialogInterface.BUTTON_NEGATIVE) {
+                            permissionsNotGranted();
                         }
                     };
                     new AlertDialog.Builder(this)
